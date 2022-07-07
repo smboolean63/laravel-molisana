@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $pasta = config('pasta');
+
+    $paste = [
+        'lunga' => [],
+        'corta' => [],
+        'cortissima' => [],
+    ];
+    foreach($pasta as $prodotto) {
+        $paste[$prodotto['tipo']][] = $prodotto;
+    }
+
+    return view('home', compact('paste'));
 });
