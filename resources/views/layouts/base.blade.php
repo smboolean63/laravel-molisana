@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('page-title', 'La Molisana')</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    @yield('head-script')
 </head>
 <body>
     @include('partials.header')
     <main>
-        @yield('page-content')
+        <div class="container">
+            @yield('page-content')
+        </div>
     </main>
     @include('partials.footer')
 </body>

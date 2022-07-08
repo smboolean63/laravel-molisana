@@ -5,14 +5,38 @@
 @endsection
 
 @section('page-content')
-@dump($paste)
     <section>
         <h2>LE LUNGHE</h2>
-        <ul>
+        <ul class="product-list">
             @foreach ($paste['lunga'] as $pasta)
                 <li>
-                    <img src="{{$pasta['src']}}" alt="">
-                    <h3>{{$pasta['titolo']}}</h3>
+                    <a href="{{route('product', ['id' => $pasta['id']])}}">
+                        <x-card-product :image="$pasta['src']" :title="$pasta['titolo']"/>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </section>
+    <section>
+        <h2>LE CORTE</h2>
+        <ul class="product-list">
+            @foreach ($paste['corta'] as $pasta)
+                <li>
+                    <a href="{{route('product', ['id' => $pasta['id']])}}">
+                        <x-card-product :image="$pasta['src']" :title="$pasta['titolo']"/>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </section>
+    <section>
+        <h2>LE CORTISSIME</h2>
+        <ul class="product-list">
+            @foreach ($paste['cortissima'] as $pasta)
+                <li>
+                    <a href="{{route('product', ['id' => $pasta['id']])}}">
+                        <x-card-product :image="$pasta['src']" :title="$pasta['titolo']"/>
+                    </a>
                 </li>
             @endforeach
         </ul>

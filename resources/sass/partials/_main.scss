@@ -1,3 +1,15 @@
 main {
     background-image: url('../img/fondo-pag-speciali.jpg');
+    padding: 40px 0;
+
+    .product-list {
+        display: flex;
+        list-style: none;
+        flex-wrap: wrap;
+
+        > * {
+            width: calc(100% / 3 - 10px);
+            margin: 5px;
+        }
+    }
 }

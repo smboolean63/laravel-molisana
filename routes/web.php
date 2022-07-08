@@ -21,9 +21,22 @@ Route::get('/', function () {
         'corta' => [],
         'cortissima' => [],
     ];
-    foreach($pasta as $prodotto) {
+    foreach($pasta as $index => $prodotto) {
+        $prodotto['id'] = $index;
         $paste[$prodotto['tipo']][] = $prodotto;
     }
 
     return view('home', compact('paste'));
-});
+})->name('home');
+
+Route::get('prodotto/{id}', function ($id) {
+    $pasta = config('pasta');
+
+    if($id >= count($pasta)) {
+        abort('404');
+    }
+
+    $prodotto = $pasta[$id];
+
+    return view('product', compact('prodotto'));
+})->where('id', '[0-9]+')->name('product');
